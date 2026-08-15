@@ -1,0 +1,50 @@
+/* ==========================================================================
+   Design tokens — identidade visual: navy/dourado/creme, premium/religiosa
+   ========================================================================== */
+:root {
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+
+  --navy-deep: #0f1729;
+  --navy: #1a2744;
+  --navy-light: #2d3a5c;
+  --navy-lighter: #3d4f75;
+
+  --gold: #c9a96e;
+  --gold-light: #d4b87a;
+  --gold-soft: rgba(201, 169, 110, 0.15);
+  --gold-glow: rgba(201, 169, 110, 0.08);
+
+  --cream: #f5f0e8;
+  --cream-soft: rgba(245, 240, 232, 0.08);
+  --white: #fff;
+
+  --text-primary: #f5f0e8;
+  --text-secondary: #b8b0a0;
+  --text-tertiary: #8a8275;
+
+  --border: rgba(201, 169, 110, 0.18);
+  --success: #7cb87c;
+  --danger: #d48484;
+  --warning: #e8c97a;
+
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+}
+
+[data-theme="light"] {
+  --navy-deep: #f5f0e8;
+  --navy: #fff;
+  --navy-light: #ede8e0;
+  --navy-lighter: #e0d8cc;
+
+  --text-primary: #1a2744;
+  --text-secondary: #4a5570;
+  --text-tertiary: #8a92a8;
+
+  --border: rgba(26, 39, 68, 0.12);
+  --cream: #1a2744;
+  --cream-soft: rgba(26, 39, 68, 0.05);
+  --white: #1a2744;
+}

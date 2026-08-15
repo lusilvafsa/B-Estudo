@@ -1,0 +1,323 @@
+/* ==========================================================================
+   Reset & layout base
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: #000;
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 16px;
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+/* Tamanho padrão para qualquer SVG sem uma regra mais específica
+   (ex.: ícones inseridos inline em títulos, rótulos e botões de texto).
+   Contêineres de ícone dedicados (.menu-icon svg, .icon-btn svg etc.)
+   têm regras mais específicas abaixo e continuam vencendo esta. */
+svg {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  vertical-align: -0.125em;
+}
+
+/* Mesmo comportamento do svg acima, mas para ícones que são imagem
+   (ex.: o ícone da Bíblia, assets/icons/bible-icon.png) em vez de SVG. */
+.icon-glyph {
+  width: 1em;
+  height: 1em;
+  object-fit: contain;
+  flex-shrink: 0;
+  vertical-align: -0.125em;
+  display: inline-block;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Focus visível para navegação por teclado (acessibilidade) */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.phone-frame {
+  width: 100%;
+  max-width: 400px;
+  height: 100vh;
+  min-height: 100vh;
+  background: var(--navy-deep);
+  border-radius: 32px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--border);
+  box-shadow: 0 0 0 4px var(--navy), 0 20px 60px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  transition: background 0.4s ease;
+}
+
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.status-bar .time { letter-spacing: 0.02em; }
+.status-icons { display: flex; gap: 6px; align-items: center; }
+.status-icons svg { width: 16px; height: 16px; }
+
+.app-header {
+  padding: 20px 20px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.app-header h1 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--gold);
+}
+.header-actions { display: flex; gap: 10px; align-items: center; }
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--navy-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+.icon-btn:hover, .icon-btn:active {
+  background: var(--navy-lighter);
+  color: var(--gold);
+  transform: scale(0.96);
+  border-color: var(--gold);
+}
+.icon-btn svg { width: 20px; height: 20px; }
+.icon-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--navy-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--gold);
+  transition: all 0.3s ease;
+}
+.theme-toggle:hover { background: var(--navy-lighter); transform: scale(0.96); }
+
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 16px 90px;
+  scrollbar-width: none;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+  min-height: 0;
+}
+.app-content::-webkit-scrollbar { display: none; }
+
+.screen { display: none; }
+.screen.active { display: block; animation: fadeIn 0.35s ease; }
+
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 24px 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-primary);
+}
+.section-title .see-all {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gold);
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0 20px;
+  border-top: 1px solid var(--border);
+  background: var(--navy);
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 400px;
+  z-index: 50;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--text-tertiary);
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+.nav-item:hover { color: var(--text-secondary); }
+.nav-item.active { color: var(--gold); }
+.nav-item svg, .nav-item .icon-glyph { width: 22px; height: 22px; }
+.nav-item span { font-size: 10px; font-weight: 600; }
+
+.toast {
+  position: absolute;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--gold);
+  color: var(--navy-deep);
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 100;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast.error { background: var(--danger); color: #2a0e0e; }
+.toast.success { background: var(--success); color: #0e2a0e; }
+
+.home-indicator {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 4px;
+  background: var(--text-tertiary);
+  border-radius: 2px;
+  opacity: 0.3;
+  z-index: 60;
+}
+
+/* Estado de carregamento / vazio / erro, reutilizáveis */
+.state-message {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-tertiary);
+  font-size: 13px;
+}
+.state-message.error { color: var(--danger); }
+
+@media (max-width: 420px) {
+  body { padding: 0; }
+  .phone-frame {
+    border-radius: 0;
+    max-width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    border: none;
+    box-shadow: none;
+  }
+  .home-indicator { display: none; }
+}
+
+/* Desktop: expandir a interface de forma inteligente em vez de um
+   "container de celular" isolado no meio da tela */
+@media (min-width: 860px) {
+  body { align-items: center; padding: 40px; }
+  .phone-frame {
+    max-width: 420px;
+    height: min(900px, 94vh);
+    min-height: 0;
+    box-shadow: 0 0 0 4px var(--navy), 0 30px 80px rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* --- Resume banner (continuar leitura) --- */
+.resume-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 8px 20px 12px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold-glow));
+  border: 1px solid rgba(201,169,110,0.25);
+  border-radius: 14px;
+  color: var(--text-primary);
+  font-size: 13px;
+  animation: fadeSlideDown 0.4s ease;
+}
+.resume-banner strong {
+  color: var(--navy-deep);
+}
+.resume-banner .tool-btn {
+  background: var(--navy-deep);
+  color: var(--gold);
+  border: none;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

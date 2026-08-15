@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="Bíblia de Estudo — leitura completa da Bíblia (ACF), Bíblia em áudio, orações guiadas e quiz bíblico.">
+<meta name="theme-color" content="#0f1729">
+<link rel="icon" type="image/png" href="assets/icons/favicon.png">
+<title>Bíblia de Estudo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+<div class="phone-frame" id="phoneFrame">
+
+  <div class="splash-screen" id="splashScreen">
+    <video class="splash-media" autoplay loop muted playsinline aria-hidden="true">
+      <source src="assets/media/hero-loop.webm" type="video/webm">
+      <source src="assets/media/hero-loop.mp4" type="video/mp4">
+    </video>
+    <div class="splash-title">Bíblia de Estudo</div>
+    <div class="splash-subtitle">Sua jornada de fé</div>
+    <div class="splash-loading"><div class="splash-loading-bar"></div></div>
+  </div>
+
+  </div>
+
+  <header class="app-header">
+    <h1 id="headerTitle">Bíblia de Estudo</h1>
+    <div class="header-actions" id="headerActions"></div>
+  </header>
+
+  <main class="app-content" id="appContent" aria-live="polite"></main>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <nav class="bottom-nav" aria-label="Navegação principal">
+    <button class="nav-item" data-nav-key="home" data-route="/">
+      <span class="nav-icon"></span><span>Início</span>
+    </button>
+    <button class="nav-item" data-nav-key="bible" data-route="/biblia">
+      <span class="nav-icon"></span><span>Bíblia</span>
+    </button>
+    <button class="nav-item" data-nav-key="audio" data-route="/audio">
+      <span class="nav-icon"></span><span>Áudio</span>
+    </button>
+    <button class="nav-item" data-nav-key="prayer" data-route="/oracao">
+      <span class="nav-icon"></span><span>Oração</span>
+    </button>
+    <button class="nav-item" data-nav-key="profile" data-route="/perfil">
+      <span class="nav-icon"></span><span>Perfil</span>
+    </button>
+  </nav>
+
+  <div class="home-indicator"></div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
