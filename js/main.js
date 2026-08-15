@@ -22,17 +22,7 @@ import { notFoundPage } from './features/notFound.js';
 
 const NAV_ICONS = { home: icons.home, bible: icons.bible, audio: icons.audio, prayer: icons.prayer, profile: icons.profile };
 
-function initClock() {
-  const clockEl = qs('#clock');
-  function update() {
-    const now = new Date();
-    const h = now.getHours();
-    const m = now.getMinutes();
-    clockEl.textContent = `${h}:${m < 10 ? '0' : ''}${m}`;
-  }
-  update();
-  setInterval(update, 60000);
-}
+
 
 function initSplashScreen() {
   setTimeout(() => {
